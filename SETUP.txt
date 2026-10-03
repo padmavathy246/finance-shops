@@ -1,0 +1,72 @@
+SARATH FINANCE — HOW TO OPEN YOUR APP
+=====================================
+
+You do not need to know coding. Do these steps in order.
+
+
+STEP 1. Create the database (Supabase)
+--------------------------------------
+1. Go to https://supabase.com and sign up (free).
+2. Click "New project".
+3. Name it sarath-finance.
+4. Type a strong database password and write it in a notebook.
+   You will not put this password in the website.
+5. Wait until the project is ready.
+6. In the left menu click "SQL Editor", then "New query".
+7. Open the file named supabase/schema.sql in this folder.
+   Select all text, copy it, paste into Supabase, click Run.
+8. Left menu: Project Settings (gear) → API.
+   Copy two things only:
+   - Project URL
+   - anon public key
+   NEVER copy the service_role secret key.
+
+
+STEP 2. Tell the app how to find the database
+---------------------------------------------
+On your computer:
+1. Copy the file .env.example
+2. Rename the copy to .env
+3. Paste the Project URL and anon key into that file.
+
+Example:
+
+VITE_SUPABASE_URL=https://abcdxyz.supabase.co
+VITE_SUPABASE_ANON_KEY=paste-the-anon-key-here
+
+
+STEP 3. Turn off email confirmation (easier for personal use)
+-------------------------------------------------------------
+In Supabase: Authentication → Providers → Email
+Turn OFF "Confirm email" if you want to sign in immediately.
+
+
+STEP 4. Put the website on the internet (Netlify)
+-------------------------------------------------
+1. Create a free account at https://www.netlify.com
+2. Put this whole project on GitHub (github.com → New repository → upload the folder).
+3. In Netlify click "Add new site" → "Import an existing project" → GitHub → choose the repository.
+4. Build settings:
+   - Build command: npm run build
+   - Publish directory: dist
+5. Before deploy, open Site configuration → Environment variables and add:
+   VITE_SUPABASE_URL     = your Project URL
+   VITE_SUPABASE_ANON_KEY = your anon public key
+6. Click Deploy.
+7. When it finishes, Netlify shows a link like:
+   https://something-random.netlify.app
+8. Open that link on your phone or computer.
+9. Create your account with email and password.
+10. Start adding customers. The data stays in your Supabase account,
+    so it still appears if you change phones or browsers.
+
+
+STEP 5. Daily use
+-----------------
+- Dashboard shows live totals.
+- Customers → Add customer.
+- Payments → Record payment when money comes in.
+- Reports → pick any month.
+- Settings → download backup JSON and keep it safe.
+
+If a payment was typed wrong: open it → Edit or Delete (it will ask you to confirm).
